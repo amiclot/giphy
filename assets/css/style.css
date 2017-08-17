@@ -1,0 +1,19 @@
+img {
+	margin: 2%;
+}
+
+button {
+	margin: .5%;
+}
+
+input{
+	margin: 2%;
+}
+
+.noPadding{
+	padding: 0px;
+}
+
+label{
+	margin-left: 2%;
+}
