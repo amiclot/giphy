@@ -1,5 +1,6 @@
 img {
-	margin: 2%;
+	
+
 }
 
 button {
@@ -16,4 +17,15 @@ input{
 
 label{
 	margin-left: 2%;
+}
+
+.panel{
+	max-width: 40%;
+	float: left;
+	margin: 1%;
+
+}
+
+#fighter-view{
+	margin-left: 10%;
 }
