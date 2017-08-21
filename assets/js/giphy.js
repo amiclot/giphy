@@ -2,39 +2,39 @@
       var fighters = ["Jon Jones", "Demetrious Johnson", "Conor McGregor", "Stipe Miocic", "Max Holloway", "Cody Garbrandt", "Daniel Cormier", "Joanna Jedrzejczyk", "Tyron Woodley", "Dominick Cruz"];
 
    
-      function displayFighterInfo() {
+      function displayFighterGif() {
 
-    var fighter = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + fighter + "&limit=10&api_key=dc6zaTOxFJmzC";
+        var fighter = $(this).attr("data-name");
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + fighter + "&limit=10&api_key=dc6zaTOxFJmzC";
+        $('#fighter-view').empty();
+        $.ajax({
+          url: queryURL,
+          method: 'GET'
+        }).done(function(response) {
+          console.log(response);
+          console.log(response.data[0].images.fixed_width.url);
+          console.log(response.data);
 
-    $.ajax({
-      url: queryURL,
-      method: 'GET'
-    }).done(function(response) {
-      console.log(response);
-      console.log(response.data[0].images.fixed_width.url);
-      console.log(response.data);
+          var results = response.data;
 
-      var results = response.data;
+          for (var i = 0; i < results.length; i++) {
+                var gifDiv = $("<div class='panel panel-default'>");
+                var rating = results[i].rating;
+                var h4 = $("<h4 class=text-center>").text("Rating: " + rating);
+                var fighterImage = $("<img class=img-responsive>");
+                fighterImage.attr("src", results[i].images.fixed_height_still.url);
+                fighterImage.attr("image-still", results[i].images.fixed_height_still.url);
+                fighterImage.attr("image-animate", results[i].images.fixed_height.url);
+                fighterImage.attr("image-state", "still");
+                gifDiv.prepend(h4);
+                gifDiv.prepend(fighterImage);
+                $("#fighter-view").prepend(gifDiv);
+              }
 
-      for (var i = 0; i < results.length; i++) {
-            var gifDiv = $("<div class='panel panel-default'>");
-            var rating = results[i].rating;
-            var h4 = $("<h4 class=text-center>").text("Rating: " + rating);
-            var fighterImage = $("<img class=img-responsive>");
-            fighterImage.attr("src", results[i].images.fixed_height_still.url);
-            fighterImage.attr("image-still", results[i].images.fixed_height_still.url);
-            fighterImage.attr("image-animate", results[i].images.fixed_height.url);
-            fighterImage.attr("image-state", "still");
-            gifDiv.prepend(h4);
-            gifDiv.prepend(fighterImage);
-            $("#fighter-view").prepend(gifDiv);
+
+        });
+
           }
-
-
-    });
-
-      }
 
   
       function renderButtons() {
@@ -61,7 +61,7 @@
      
       $("#add-fighter").on("click", function(event) {
         event.preventDefault();
-        x
+        
         var fighter = $("#fighter-input").val().trim();
 
         fighters.push(fighter);
@@ -71,10 +71,10 @@
       });
 
 
-      $(document).on("click", ".fighter", displayFighterInfo);
+      $(document).on("click", ".fighter", displayFighterGif);
 
 
-      renderButtons();
+      
 
       $(document).on("click", ".img-responsive", function() {
         
@@ -89,3 +89,5 @@
         }
 
        });
+
+      renderButtons();
