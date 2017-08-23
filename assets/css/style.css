@@ -20,8 +20,9 @@ input{
 
 label{
 	margin-left: 2%;
-	color:white;
-	font-size: 150%;
+	color:black;
+	font-size: 140%;
+	margin-top: 3%;
 }
 
 .panel{
@@ -49,8 +50,8 @@ label{
 
 
 .addBtn{
-	color:white;
-	background-color: black;
-	border-color: red
+	color:grey;
+	background-color: white;
+	border-color: black;
 
 }
