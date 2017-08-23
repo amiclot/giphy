@@ -1,10 +1,13 @@
 img {
-	
+
 
 }
 
 button {
 	margin: .5%;
+	color:white;
+	background-color: black;
+	border-color: red;
 }
 
 input{
@@ -17,6 +20,8 @@ input{
 
 label{
 	margin-left: 2%;
+	color:white;
+	font-size: 150%;
 }
 
 .panel{
@@ -24,8 +29,28 @@ label{
 	float: left;
 	margin: 1%;
 
+
 }
 
 #fighter-view{
 	margin-left: 10%;
+	
+}
+
+#header{
+	background-color: red;
+}
+
+#title{
+	background-color: black;
+	color: black;
+}
+
+
+
+.addBtn{
+	color:white;
+	background-color: black;
+	border-color: red
+
 }
